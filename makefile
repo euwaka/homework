@@ -11,6 +11,16 @@ MODE    := p
 
 all: $(MODE)
 
+create:
+> @echo "Creating homework for $(SUBJECT), $(WEEK)"
+> @if [ ! -d "$(SUBJECT)/$(WEEK)/" ]; then \
+> 	echo "Creating directory structure..."; \
+>	mkdir -p "$(SUBJECT)/$(WEEK)/"; \
+> 	cp "templates/$(SUBJECT).tex" "$(SUBJECT)/$(WEEK)/main.tex"; \
+> else \
+> 	echo "Already exists!"; \
+> fi
+
 pure:
 > $(MAKE) build_pure SUBJECT=$(SUBJECT) WEEK=$(WEEK)
 
