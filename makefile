@@ -1,11 +1,12 @@
 .RECIPEPREFIX = >
 
+BIB_COMPILER = bibtex
 TEX_COMPILER = pdflatex
 PY_COMPILER  = python3
 
 SUBJECT := calculus
 WEEK    := W1
-MODE    := p
+MODE    := pure
 
 .PHONY: all pure scripted clean
 
@@ -32,7 +33,6 @@ build_scripted: build_python build_pure
 build_pure:
 > @echo "Building LaTeX for $(SUBJECT), $(WEEK)"
 > mkdir -p build/$(SUBJECT)/$(WEEK)/
-> $(TEX_COMPILER) -output-directory=build/$(SUBJECT)/$(WEEK)/ $(SUBJECT)/$(WEEK)/main.tex
 > $(TEX_COMPILER) -output-directory=build/$(SUBJECT)/$(WEEK)/ $(SUBJECT)/$(WEEK)/main.tex
 
 build_python:
